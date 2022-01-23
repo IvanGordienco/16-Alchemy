@@ -123,7 +123,7 @@ def users():
             res.append(user.to_dict())
         return json.dumps(res), 200
     elif request.method == "POST":
-        user_data = json.load(request.data)
+        user_data = json.loads(request.data)
         new_user = User(
             first_name=user_data["first_name"],
             last_name=user_data["last_name"],
@@ -169,7 +169,7 @@ def orders():
         return json.dumps(res, sort_keys=False, indent=4, ensure_ascii=False, ), 200, {
             'Content-Type': 'application/json; charset=utf-8'}
     elif request.method == "POST":
-        order_data = json.load(request.data)
+        order_data = json.loads(request.data)
         new_user = Order(
             name=order_data["name"],
             description=order_data["description"],
@@ -216,7 +216,7 @@ def offers():
             res.append(offer.to_dict())
         return json.dumps(res, sort_keys=False, indent=4, ensure_ascii=False, ), 200
     elif request.method == "POST":
-        offer_data = json.load(request.data)
+        offer_data = json.loads(request.data)
         new_offer = Offer(
             order_id=offer_data["order_id"],
             executor_id=offer_data["executor_id"]
